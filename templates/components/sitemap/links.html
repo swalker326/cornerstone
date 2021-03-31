@@ -1,10 +1,8 @@
 <li>
-    <a href="{{url}}">{{label}}</a>
-    {{#if children}}
-        <ul>
-            {{#each children}}
-                {{> components/sitemap/links}}
-            {{/each}}
-        </ul>
-    {{/if}}
+  <a href="{{url}}">{{label}}</a>
+  {{#if children}}
+  <ul>
+    {{#each children}} {{> components/sitemap/links}} {{/each}}
+  </ul>
+  {{/if}}
 </li>
