@@ -2,21 +2,21 @@
  * This function removes any empty string values from the formData
  * @param formData: FormData object
  * @returns FormData object
-*/
-export const filterEmptyValuesFromForm = formData => {
-    const res = new FormData();
+ */
+export const filterEmptyValuesFromForm = (formData) => {
+  const res = new FormData();
 
-    try {
-        for (const [key, val] of formData) {
-            if (val !== '') {
-                res.append(key, val);
-            }
-        }
-    } catch (e) {
-        console.log(e); // eslint-disable-line no-console
+  try {
+    for (const [key, val] of formData) {
+      if (val !== "") {
+        res.append(key, val);
+      }
     }
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
+  }
 
-    return res;
+  return res;
 };
 
 /**
@@ -25,20 +25,20 @@ export const filterEmptyValuesFromForm = formData => {
  * @param formData: FormData object
  * @returns FormData object
  */
-export const filterEmptyFilesFromForm = formData => {
-    const res = new FormData();
+export const filterEmptyFilesFromForm = (formData) => {
+  const res = new FormData();
 
-    try {
-        for (const [key, val] of formData) {
-            if (!(val instanceof File) || val.name || val.size) {
-                res.append(key, val);
-            }
-        }
-    } catch (e) {
-        console.error(e); // eslint-disable-line no-console
+  try {
+    for (const [key, val] of formData) {
+      if (!(val instanceof File) || val.name || val.size) {
+        res.append(key, val);
+      }
     }
+  } catch (e) {
+    console.error(e); // eslint-disable-line no-console
+  }
 
-    return res;
+  return res;
 };
 
 /**
@@ -46,4 +46,5 @@ export const filterEmptyFilesFromForm = formData => {
  * @param formData: FormData object
  * @returns FormData object
  */
-export const normalizeFormData = formData => filterEmptyValuesFromForm(filterEmptyFilesFromForm(formData));
+export const normalizeFormData = (formData) =>
+  filterEmptyValuesFromForm(filterEmptyFilesFromForm(formData));

@@ -4,13 +4,13 @@
 
 /* eslint-disable prefer-rest-params, func-names */
 export default function () {
-    const oldFnFind = jQuery.fn.find;
+  const oldFnFind = jQuery.fn.find;
 
-    jQuery.fn.find = function (selector) {
-        const ret = oldFnFind.apply(this, arguments);
-        ret.context = this.context;
-        ret.selector = this.selector ? `${this.selector} ${selector}` : selector;
-        return ret;
-    };
+  jQuery.fn.find = function (selector) {
+    const ret = oldFnFind.apply(this, arguments);
+    ret.context = this.context;
+    ret.selector = this.selector ? `${this.selector} ${selector}` : selector;
+    return ret;
+  };
 }
 /* eslint-enable prefer-rest-params */
