@@ -65,6 +65,10 @@
     "build": "npx webpack --config webpack.prod.js",
     "buildDev": "npx webpack --config webpack.dev.js",
     "lighthouse": "npx lighthouse --config-path=lighthouse-config.js --quiet --output json --chrome-flags=\"--headless\" $URL | jq '.audits | map_values(.rawValue)'",
+    "dev": "npx stencil start -n -v \"Light\"",
+    "deploy": "npx stencil push",
+    "deploy:activate": "npx stencil push -a \"Light\"",
+    "buildIcons": "npx grunt svgstore",
     "test": "npx jest"
   }
 }
