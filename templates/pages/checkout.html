@@ -28,3 +28,53 @@
 
 {{{ checkout.checkout_content }}} {{{ footer.scripts }}} {{/partial}} {{>
 layout/empty}}
+
+<script type="text/javascript">
+const elements = [
+  {selector:'#shippingOptionRadio-607181c6c3404-bc0678eca530d746f420d9853a868ce1'}
+]
+const pickupAddressData = [
+  //Address form IDs
+  {selector: 'addressLine1Input', data:'123 First Street'},
+  {selector: 'addressLine2Input', data:''},
+  {selector: 'postCodeInput', data: '12345'},
+  {selector: 'cityInput', data: 'Bellefonte'},
+  {selector: 'provinceCodeInput', data:'PA'},
+]
+const disableAddresFields = () => {
+  pickupAddressData.forEach( field => {
+    const element = document.querySelector(`#${field.selector}`);
+    element.value = field.data;
+    element.setAttribute('disabled', 'true');
+  })
+};
+const enableAddressFields = () => {
+  pickupAddressData.forEach( field => {
+    const element = document.querySelector(`#${field.selector}`);
+    console.log("element", element); // eslint-disable-line
+    element.removeAttribute('disabled');
+  })
+}
+const checkElements = setInterval(() => {
+  const element = document.querySelector(elements[0].selector)
+  if (element) {
+    const options = document.querySelectorAll('.shippingOptions-container.form-fieldset input');
+    options.forEach( radio => {
+      radio.addEventListener('input', (evt) => {
+        console.log("event.target.name", event.target.name); // eslint-disable-line
+        console.log("event.target.checked", event.target.checked); // eslint-disable-line
+        if (event.target.id === 'shippingOptionRadio-607181c6c3404-bc0678eca530d746f420d9853a868ce1') {
+          disableAddresFields();
+        } else {
+          enableAddressFields();
+          console.log("turn address fields back on"); // eslint-disable-line
+        }
+      })
+    })
+    clearInterval(checkElements)
+    if (element.checked) disableAddresFields();
+    return element;
+  }
+}, 1000);
+checkElements();
+</script>
