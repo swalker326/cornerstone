@@ -1,5 +1,4 @@
 import React from 'react';
-import utils from '@bigcommerce/stencil-utils';
 import styled from 'styled-components';
 
 
