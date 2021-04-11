@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import utils from '@bigcommerce/stencil-utils';
 import styled from 'styled-components';
 
@@ -16,7 +15,6 @@ const Card = (props) => {
       align-items: center;
       max-width: 20%;
     `;
-  console.log("props", props); // eslint-disable-line
     return (
         <CardWrapper className='Product-Card'>
             <a href={props.product.url}>

@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PageManager from '../page-manager';
 import Card from '../react/Card';
+import Breadcrumbs from '../react/Breadcrumbs';
 import styled from 'styled-components';
 
 const Category = (props) => {
+    console.log("props", props); // eslint-disable-line
     const CategoryWrapper = styled.div`
       display: flex;
       flex-wrap: wrap;
@@ -12,12 +14,15 @@ const Category = (props) => {
     `;
     const products = props.context.category.products;
     return (
-        <CategoryWrapper>
-            {
-                products.map((product) => (
-                    <Card product={product} />
-                ))}
-        </CategoryWrapper>
+        <div>
+            <Breadcrumbs breadcrumbs={props.context.breadcrumbs} />
+            <CategoryWrapper>
+                {
+                    products.map((product) => (
+                        <Card product={product} />
+                    ))}
+            </CategoryWrapper>
+        </div>
     );
 };
 
