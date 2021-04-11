@@ -16,6 +16,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css/,
+                loader: ['style-loader', 'css-loader'],
+            },
+            {
                 test: /\.js$/,
                 include: /(assets\/js|assets\\js|stencil-utils)/,
                 use: {
@@ -32,6 +36,7 @@ module.exports = {
                                 useBuiltIns: 'entry',
                                 corejs: '^3.6.5',
                             }],
+                            ['@babel/preset-react'],
                         ],
                     },
                 },
