@@ -14,16 +14,20 @@ const Breadcrumbs = (props) => {
     const BreadcrumbLink = styled.a`
       text-decoration: none;
     `;
+    const BreadcrumbDivider = styled.span`
+      margin: 0 5px;
+    `;
+    const breadcrumbLength = props.breadcrumbs.length;
     return (
         <BreadcrumbWrapper className='Breadcrumbs' >
             <BreadcrumbList>
                 {
-                    props.breadcrumbs.map((breadcrumb) => (
+                    props.breadcrumbs.map((breadcrumb, i) => (
                         <li>
                             <BreadcrumbLink href={breadcrumb.url}>
                                 {breadcrumb.name}
                             </BreadcrumbLink>
-                            <span> / </span>
+                            {(breadcrumbLength !== i + 1) ? <BreadcrumbDivider>/</BreadcrumbDivider> : null}
                         </li>
                     ))}
             </BreadcrumbList>

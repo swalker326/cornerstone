@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PageManager from '../page-manager';
-import Card from '../react/Card';
 import Breadcrumbs from '../react/Breadcrumbs';
+import PageTitle from '../react/PageTitle'
+import Card from '../react/Card';
 import styled from 'styled-components';
 
 const Category = (props) => {
@@ -16,6 +17,7 @@ const Category = (props) => {
     return (
         <div>
             <Breadcrumbs breadcrumbs={props.context.breadcrumbs} />
+            <PageTitle title={props.context.category.name} ></PageTitle>
             <CategoryWrapper>
                 {
                     products.map((product) => (
